@@ -46,6 +46,8 @@ type Node struct {
 	id string
 	// nodes is the list of node IDs in the cluster, including the local node.
 	nodes []string
+	// topology is the list of node IDs in the neighbourhood of the local node.
+	topology []string
 	// initHandler is the handler for the `init` message. It uses a different
 	// message signature to regular message handlers, and is expected to be
 	// invoked before any other messages are received.
@@ -67,6 +69,18 @@ func NewNode() *Node {
 func (n *Node) Init(id string, nodes []string) {
 	n.id = id
 	n.nodes = nodes
+}
+
+func (n *Node) ID() string {
+	return n.id
+}
+
+func (n *Node) Topology() []string {
+	return n.topology
+}
+
+func (n *Node) SetTopology(topology []string) {
+	n.topology = topology
 }
 
 // Handle registers handler against the given msgType. If handler already exists

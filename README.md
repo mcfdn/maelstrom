@@ -14,5 +14,14 @@ Reference: https://github.com/jepsen-io/maelstrom/blob/main/doc/02-echo/index.md
 
 ```
 go build -o echo cmd/echo/main.go
-./maelstrom/maelstrom test -w echo --bin main --nodes n1 --time-limit 10
+./maelstrom test -w echo --bin echo --nodes n1 --time-limit 10
+```
+
+## Broadcast
+
+Reference: https://github.com/jepsen-io/maelstrom/blob/main/doc/03-broadcast/01-broadcast.md
+
+```
+go build -o broadcast cmd/broadcast/main.go
+./maelstrom test -w broadcast --bin broadcast --time-limit 5 --rate 10
 ```
